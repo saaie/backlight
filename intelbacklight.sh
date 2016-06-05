@@ -14,6 +14,8 @@ read INTEL_MAX < "$INTEL_DIR/max_brightness"
 
 read ACPI_CURRENT < "$ACPI_DIR/brightness"
 ACPI_PERCENT=$(awk "BEGIN { PERCENT=100*${ACPI_CURRENT}/${ACPI_MAX}; i=int(PERCENT); print (PERCENT-i<0.5)?i:i+1 }")
+#echo "acpi_percent = $ACPI_PERCENT"
+ACPI_PERCENT=$(awk "BEGIN { j=int(${ACPI_PERCENT}); print (j<10)?5:j }")
 
 #echo "acpi_percent = $ACPI_PERCENT"
 
